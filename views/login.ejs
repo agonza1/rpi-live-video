@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/custom.css">
+    <title>Login to your camera room</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <% if (login_response.response === 'Room already exists. Not allowed') { %>
+    <script>
+        setTimeout(function(){ location.reload(); }, 5200);
+    </script>
+    <% } %>
+</head>
+<body>
+<div id="loginModal" class="modal show">
+    <!-- login Modal content -->
+    <div>
+        <!--<span class="close">&times;</span>-->
+        <div class="log-in-form-container w-container">
+            <h3>Login</h3>
+            <div id="login-form-block" class="log-in-form-block">
+                <form id="login-form" action="/login" method="post" name="login-form">
+                    <label for="room" class="room_name">Room Name:</label>
+                    <% if (typeof roomName !== 'undefined') { %>
+                      <input type="text" class="room-name" maxlength="256" name="room" value="<%= roomName %>" id="room_name" required autocomplete="on">
+                    <% } else { %>
+                      <input type="text" class="room-name" maxlength="256" name="room" placeholder="yourRoomName" id="room_name" required autocomplete="on">
+                    <% } %>
+                    <label for="type" class="type">User Type:</label>
+                    <% if (typeof type !== 'undefined') { %>
+                      <input type="text" class="type" maxlength="100" name="type" value="<%= type %>" id="user_type" required autocomplete="on">
+                    <% } else { %>
+                      <input type="text" class="type" maxlength="100" name="type" placeholder="broadcast" id="user_type" required autocomplete="on">
+                    <% } %>
+                    <label for="token" class="token">Token:</label>
+                    <input type="text" class="token-input" maxlength="256" name="token" placeholder="your token" id="room_token" required autocomplete="on">
+                    <input type="submit" value="Enter" data-wait="Please wait..." class="submit-button">
+                    <a href="#" class="button close_login">Cancel</a>
+                </form>
+                <div class="form-result">
+                    <% if (login_response) { %>
+                      <div><%= login_response.response %></div>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

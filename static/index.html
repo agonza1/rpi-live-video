@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/custom.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!--<meta http-equiv="refresh" content="30" />-->
+    <title>Realtime RPI camera view</title>
+</head>
+
+<body>
+<div class="page-header">
+<h2 style="font-weight: bold">Realtime RPI camera view</h2>
+</div>
+<div id="videos">
+    <div class="video-container">
+        <div class="spinner" id="spinner">
+            <div class="spinner1 sk-child"></div>
+            <div class="spinner2 sk-child"></div>
+            <div class="spinner3 sk-child"></div>
+            <div class="spinner4 sk-child"></div>
+            <div class="spinner5 sk-child"></div>
+            <div class="spinner6 sk-child"></div>
+            <div class="spinner7 sk-child"></div>
+            <div class="spinner8 sk-child"></div>
+            <div class="spinner9 sk-child"></div>
+            <div class="spinner10 sk-child"></div>
+            <div class="spinner11 sk-child"></div>
+            <div class="spinner12 sk-child"></div>
+        </div>
+        <video id="localVideo" autoplay style="display: none;"></video>
+        <video id="remoteVideo" autoplay class="video-fit"></video>
+        <div class="video_options" id="video_options">
+
+            <div class="video-call-controls" id="video-call-controls">
+                <!--<label class="videocall-text">Controls</label>-->
+                <!-- The button used to copy the link -->
+                <button onclick="generateClientLink()" class="com btn left" id="share">
+                    <i class="fa fa-share" id="share"></i>
+                </button>
+
+                <button  class="com btn download" id="download">
+                    <i class="fa fa-download" id="download"></i>
+                </button>
+
+                <button class="com btn right" id="turn-left">
+                    <i class="fa fa-undo" id="turn-left"></i>
+                </button>
+
+                <button class="com btn center stop" id="stop">
+                    <i class="fa fa-stop" id="stop"></i>
+                </button>
+
+                <button class="com btn zoom" id="zoom">
+                    <i class="fa fa-search-plus" id="zoom"></i>
+                </button>
+
+                <button class="com btn zoom" id="expand">
+                    <i class="fa fa-expand" id="expand"></i>
+                </button>
+            </div>
+
+        </div>
+        <input class='toast-message' style='display:none' value="new user"></input>
+    </div>
+
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+<script src="../js/main.js"></script>
+
+</body>
+
+</html>
